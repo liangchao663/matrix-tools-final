@@ -206,12 +206,12 @@
                     <path d="M12 7V2"/>
                 </svg>
             </div>
-            <h1>1688 产品裂变黑盒</h1>
+            <h1>产品裂变黑盒</h1>
             <p>输入链接，AI 自动清洗图片、重写标题 SKU，一键生成独立站/抖店素材包。</p>
 
             <div class="input-group">
-                <label class="input-label">1688 商品详情页链接</label>
-                <input type="text" id="urlInput" placeholder="https://detail.1688.com/offer/..." />
+                <label class="input-label">输入商品链接</label>
+                <input type="text" id="urlInput" placeholder="输入要裂变的商品链接" />
             </div>
 
             <button id="submitBtn" class="btn-submit" onclick="startFission()">
@@ -232,7 +232,7 @@
             const spinner = document.getElementById('loadingSpinner');
 
             if (!url) {
-                status.textContent = "⚠️ 请输入有效的 1688 链接";
+                status.textContent = "⚠️ 请输入有效的链接";
                 status.className = "status-area status-error";
                 return;
             }

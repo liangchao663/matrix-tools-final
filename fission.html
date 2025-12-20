@@ -246,10 +246,10 @@
 
             try {
                 // ==========================================
-                // ⚠️ 注意：这里填的是你的 HTTP 后端 IP
-                // 如果部署到 Vercel (HTTPS)，这里可能会被浏览器拦截
+                // Vercel 代理地址 (已配置 vercel.json)
+                // 这样浏览器就会认为是请求同源的 HTTPS，不会拦截
                 // ==========================================
-                const backendUrl = 'http://124.156.158.17:8000/api/fission';
+                const backendUrl = '/api/fission';
 
                 const response = await fetch(backendUrl, {
                     method: 'POST',
@@ -285,12 +285,7 @@
 
             } catch (error) {
                 console.error(error);
-                let msg = error.message;
-                // 专门提示混合内容错误
-                if (msg.includes("Failed to fetch")) {
-                    msg = "连接失败！请检查：1.服务器是否开启 2.是否因HTTPS网页请求HTTP接口被浏览器拦截（请尝试允许不安全内容）";
-                }
-                status.textContent = "❌ 错误: " + msg;
+                status.textContent = "❌ 错误: " + error.message;
                 status.className = "status-area status-error";
             } finally {
                 // 恢复 UI
